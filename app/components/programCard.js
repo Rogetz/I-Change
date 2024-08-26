@@ -5,7 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { FaFacebook, FaInstagram,FaTwitter,FaPen,FaClipboardCheck,FaAirbnb} from "react-icons/fa";
 import studentPlanting from "../assets/studentPlanting.jpg"
-import Ivy from "../assets/Ivy_cropped.png"
+import Ivy from "../assets/Ivy_cropped.PNG"
 import plant from "../assets/plant.jpg"
 import studentPlanting2 from "../assets/studentPlanting2.jpg"
 
