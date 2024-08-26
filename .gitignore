@@ -1,0 +1,15 @@
+.env
+.next/
+.next
+node_modules
+node_modules/
+markdownguide/
+**\**\node_modules
+**\**\**\**\node_modules
+.next/trace
+.next/cache
+.next/static/webpack
+sanity/
+sanity.cli.js
+whatshewearsLogoInspiration2.PNG
+.next
