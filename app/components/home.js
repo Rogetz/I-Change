@@ -1,11 +1,9 @@
 "use client";
 
 import Image from "next/image"
-import tempImage from "../../whatshewearsLogoInspiration2.PNG"
 import Link from "next/link"
 import { ProgramCard } from "./programCard"
 import {FaArrowCircleRight, FaCheckCircle} from "react-icons/fa"
-import studentPlanting from "../assets/studentPlanting.jpg"
 import Wangari from "../assets/1721508933469.jpg"
 
 
