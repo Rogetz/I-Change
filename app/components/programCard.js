@@ -171,6 +171,46 @@ export function SingleProgram({program,programPath}){
     )
 }
 
+export function SingleEvent({program,programPath}){
+    const [iconState,setIconState] = useState()
+    const tag = program.tag
+    const programName = program.name 
+    const programDetail = program.detail
+    
+    useEffect(function(){
+        if(tag == "mentorship"){
+            setIconState(<FaPen className="rounded-full text-4xl text-blue-600"/>)
+        }
+        else if(tag == "education"){
+            setIconState(<FaClipboardCheck className="rounded-full text-green-600 text-4xl"/>)
+        }
+        else if(tag == "scholarship"){
+            setIconState(<FaAirbnb className="rounded-full text-4xl dark:text-white text-black"/>)
+        }
+    },[])
+    return(
+        <div className="w-full flex flex-col gap-2  justify-end relative bg-center bg-cover  items-center sm:w-[23rem] lg:w-[23rem]  flex-shrink-0 flex-grow-1 min-h-[25rem] dark:bg-gray-950 bg-black">
+        <div className="dark:bg-black bg-white flex items-center justify-center absolute top-0 left-0 w-[3.5rem] h-[3.5rem] lg:w-[4rem] lg:h-[4rem]">
+            {iconState}
+        </div>
+        <div className="w-full h-4/6">
+            <Image src={studentPlanting2} className="w-full h-full object-cover object-center" width="600" height="600"/>
+        </div>
+        <div className="text-green-600 font-bold text-xl">
+            {programName}
+        </div>
+        <div className="line-clamp-2 text-white">{programDetail}...</div>
+        <div className="w-full h-12 flex justify-between mb-4">
+            <Link className="text-green-600 dark:bg-white bg-white w-fit h-fit ml-4 py-2 px-4 text-xl rounded-lg" href={`learn/${programPath}`}>
+                participate
+            </Link>
+            <Link className="text-white dark:bg-black bg-green-600 w-fit h-fit mr-4  py-2 px-4 text-xl rounded-lg" href={`learn/${programPath}`}>
+                learn more...
+            </Link>
+        </div>
+        </div>
+    )
+}
 
 
 
