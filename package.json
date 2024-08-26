@@ -1,0 +1,41 @@
+{
+  "name": "testone",
+  "version": "1.0.0",
+  "description": "test for nectjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "next dev",
+    "build": "next build"
+  },
+  "author": "Rogetz",
+  "license": "ISC",
+  "dependencies": {
+    "@vercel/postgres": "^0.9.0",
+    "bcrypt": "^5.1.1",
+    "clsx": "^2.1.1",
+    "country-code-lookup": "^0.1.3",
+    "gray-matter": "^4.0.3",
+    "next": "^14.1.4",
+    "next-auth": "^5.0.0-beta.19",
+    "next-themes": "^0.3.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.9.0",
+    "react-parallax": "^3.5.1",
+    "react-text-to-speech": "^0.16.2",
+    "remark": "^15.0.1",
+    "remark-html": "^16.0.1",
+    "swiper": "^11.1.9",
+    "three.js": "^0.77.0",
+    "use-debounce": "^10.0.1",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.13",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "prisma": "^5.17.0",
+    "tailwindcss": "^3.4.3"
+  }
+}
