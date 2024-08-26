@@ -125,9 +125,9 @@ export function IntroComponent(){
 
 export function SecondComponent(){
     return(
-        <div className="w-full md:w-5/6 select-none h-auto lg:h-[20rem] rounded-xl bg-green-300 dark:bg-green-950 pb-4 mb-24">
+        <div className="w-5/6 select-none h-auto lg:h-[20rem] rounded-xl bg-green-300 dark:bg-green-950 pb-4 mb-24">
             <div className="flex flex-col lg:flex-row gap-12 p-2 md:p-4 lg:p-8">
-                <div className="w-full text-center lg:text-left md:w-5/6 lg:w-4/6 text-5xl dark:text-white text-black">We are preserving and securing nature for our future generation</div>
+                <div className="w-full text-center lg:text-left md:w-5/6 lg:w-4/6 text-3xl md:text-5xl dark:text-white text-black">We are preserving and securing nature for our future generation</div>
                 <div className="w-full lg:w-2/6 text-md text-slate-600">Involving the youths in both the institutions has proved to not only transform society's perspective of the environment but also reiterating the crucial role of youths who are the future.
                     Nature is ours and ours is nature
                 </div>
@@ -146,7 +146,7 @@ export function SecondComponent(){
 export function ProgramCards({programmsList}){
     return(
         <div className="w-full px-12 h-auto overflow-hidden md:h-[30rem] pb-6">
-        <h1 className="mb-8 text-xl sm:text-2xl">Ongoing Activities</h1>
+        <h1 className="mb-8 text-2xl sm:text-3xl font-bold md:text-5xl text-white">Ongoing Activities</h1>
         <div className="w-full h-auto md:h-11/12 flex flex-col overflow-x-auto overflow-y-hidden sm:flex-row gap-8">
         {programmsList.map(function(program,index){
             return <ProgramCard key={index} program={program}/>
@@ -169,8 +169,8 @@ export function JoinActivity(){
     }
     return(
         <>
-        <h1 className="dark:text-white flex flex-col md:flex-row text-black text-center md:text-left text-3xl mb-8 dark:font-normal font-bold">Get Involved<span className="ml-0 md:ml-8 lg:ml-12 dark:text-green-500 font-bold text-green-500">Fill up your details below and join us today</span> </h1>
-        <div className="w-full md:w-5/6 h-auto md:h-[30rem] flex flex-col md:flex-row dark:bg-green-950 bg-green-300 overflow-hidden box-border">
+        <h1 className="dark:text-white flex flex-col md:flex-row text-black text-center md:text-left text-2xl sm:text-3xl mb-8 dark:font-normal font-bold">Get Involved<span className="ml-0 md:ml-8 lg:ml-12 dark:text-green-500 text-2xl sm:text-3xl font-bold text-green-500">Fill up your details below and join us today</span> </h1>
+        <div className="w-5/6 h-auto rounded-lg md:h-[30rem] flex flex-col md:flex-row dark:bg-green-950 bg-green-300 overflow-hidden box-border">
             <div className="w-full md:w-1/2 h-[30rem] md:h-full   dark:bg-black bg-white">
                 <form onSubmit={volunteerHandler} className="w-full h-full flex flex-col justify-evenly items-center">
                     <div className="flex gap-3 w-5/6 h-24 flex-col">

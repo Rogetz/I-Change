@@ -1,6 +1,10 @@
+"use server"
+
+import { SingleEvent } from "./programCard"
+import { getAllPostsData} from  "../../lib/posts"
 
 
-export  function GetInvolvedSkeleton(){
+export async  function GetInvolvedSkeleton(){
     return(
         <div className="text-white animate-pulse bg-gray-700 dark:bg-gray-700 dark:text-slate-600 w-12/12 min-h-screen overflow-x-hidden">
             <div className="flex mb-48 h-auto w-auto ">
@@ -24,8 +28,61 @@ export  function GetInvolvedSkeleton(){
 }
 
 
-export function GetInvolved(){
+export async function GetInvolved(){
     return(
-        <div> hello from the GetInvolved page</div>
+        <div className="w-full min-h-screen">
+            <Volunteer/>
+            <Donate/>
+            <Partner/>
+        </div>
     )
 }
+
+export async function Volunteer(){
+    const mentorshipPrograms = await getAllPostsData("programs/mentorship")
+    return(
+        <div id="volunteer" className="w-full min-h-screen mb-4 lg:mb-12"> 
+        <h1 className="text-2xl dark:text-white text-black pl-3 lg:text-3xl lg:font-bold lg:pl-12 mb-4 lg:mb-12">Volunteer</h1> 
+        <div className="w-full justify-evenly lg:justify-evenly h-auto flex  flex-wrap px-12 gap-4 sm:px-2 md:px-2 lg:px-12   gap-y-5 bg-gradient-to-br">
+            {mentorshipPrograms.map(async function(program,index){
+                const actualProgram = await program
+                let mentorPath = `programs-mentorship-${actualProgram.id}`
+                return <SingleEvent key={index} programPath={mentorPath} program={actualProgram}/>
+            })}
+        </div>        
+        </div>
+    )
+}
+
+export async function Donate(){
+    const mentorshipPrograms = await getAllPostsData("programs/mentorship")
+    return(
+        <div id="donate" className="w-full min-h-screen mb-4 lg:mb-12"> 
+        <h1 className="text-2xl dark:text-white text-black pl-3 lg:text-3xl lg:font-bold lg:pl-12 mb-4 lg:mb-12">Donate</h1> 
+        <div className="w-full justify-evenly lg:justify-evenly h-auto flex  flex-wrap px-12 gap-4 sm:px-2 md:px-2 lg:px-12   gap-y-5 bg-gradient-to-br">
+            {mentorshipPrograms.map(async function(program,index){
+                const actualProgram = await program
+                let mentorPath = `programs-mentorship-${actualProgram.id}`
+                return <SingleEvent key={index} programPath={mentorPath} program={actualProgram}/>
+            })}
+        </div>        
+        </div>
+    )
+}
+
+export async function Partner(){
+    const mentorshipPrograms = await getAllPostsData("programs/mentorship")
+    return(
+        <div id="partner" className="w-full min-h-screen mb-4 lg:mb-12"> 
+        <h1 className="text-2xl dark:text-white text-black pl-3 lg:text-3xl lg:font-bold lg:pl-12 mb-4 lg:mb-12">partner with us</h1> 
+        <div className="w-full justify-evenly lg:justify-evenly h-auto flex  flex-wrap px-12 gap-4 sm:px-2 md:px-2 lg:px-12   gap-y-5 bg-gradient-to-br">
+            {mentorshipPrograms.map(async function(program,index){
+                const actualProgram = await program
+                let mentorPath = `programs-mentorship-${actualProgram.id}`
+                return <SingleEvent key={index} programPath={mentorPath} program={actualProgram}/>
+            })}
+        </div>        
+        </div>
+    )
+}
+
