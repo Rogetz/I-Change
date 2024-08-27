@@ -91,7 +91,12 @@ export function NavComponents(){
                     {darkState}
                 </button>
                 <NormalMenu links={links}/>
-                <button className="w-12 h-full flex flex-col justify-center items-center text-xl text-center"><FaUserCircle className="text-xl text-green-700"/><span className="hidden text-center sm:block text-sm lg:text-xl">LogIn</span></button>
+                <Link href="/login" className="w-12 h-full flex flex-col justify-center items-center text-xl text-center">
+                    <button className="w-12 h-full flex flex-col justify-center items-center text-xl text-center">
+                        <FaUserCircle className="text-xl text-green-700"/>
+                        <span className="hidden text-center sm:block text-sm lg:text-xl">LogIn</span>
+                    </button>                
+                </Link>
                 <button onClick={listToggler} className="block lg:hidden">
                     <FaBars className="text-2xl"/>
                 </button>
