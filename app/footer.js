@@ -51,7 +51,7 @@ export function Footer(){
             <div className="w-full text-xl flex items-center justify-center gap-2 h-12">
                 <span>copyright</span>
                 <FaRegCopyright className="text-green-600"/>
-                <span>2023</span>
+                <span>2024</span>
             </div>
             <div className="w-full h-12">
             </div>

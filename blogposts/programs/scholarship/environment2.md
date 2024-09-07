@@ -13,6 +13,8 @@ socials: [
   {instagram: "instagram.com"},
   {twitter: "twitter.com"}
 ]
+Brief: "join us as we unveil a new environmental revolution."
+
 
 ---
 

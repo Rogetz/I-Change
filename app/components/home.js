@@ -6,7 +6,19 @@ import { ProgramCard } from "./programCard"
 import {FaArrowCircleRight, FaCheckCircle} from "react-icons/fa"
 import Wangari from "../assets/1721508933469.jpg"
 
+import {Swiper,SwiperSlide} from "swiper/react"
 
+import "swiper/css"
+import "swiper/css/effect-coverflow"
+import "swiper/css/navigation"
+import "swiper/css/pagination"
+
+//effects
+import SwiperCore from "swiper"
+import { EffectCoverflow,Pagination,Navigation,Autoplay } from "swiper/modules";
+
+//for autoplay swiperjs
+SwiperCore.use([Autoplay])
 
 export  function ActualHomeSkeleton(){
     return(
@@ -144,12 +156,70 @@ export function SecondComponent(){
 export function ProgramCards({programmsList}){
     return(
         <div className="w-full px-12 h-auto overflow-hidden md:h-[30rem] pb-6">
-        <h1 className="mb-8 text-2xl sm:text-3xl font-bold md:text-5xl text-white">Ongoing Activities</h1>
-        <div className="w-full h-auto md:h-11/12 flex flex-col overflow-x-auto overflow-y-hidden sm:flex-row gap-8">
-        {programmsList.map(function(program,index){
-            return <ProgramCard key={index} program={program}/>
-        })}        
-        </div>        
+        <h1 className="mb-8 text-2xl sm:text-3xl font-bold md:text-3xl text-white">Ongoing Activities</h1>
+        {/*<div className="w-full h-auto md:h-11/12 flex flex-col overflow-x-auto overflow-y-hidden sm:flex-row gap-8">
+        </div>*/}    
+                {/*slides per view is compulsory for the coverflow effect to work effectivly
+                In this case I have used breakpoints to set the different slides per view for the different 
+            categories */}
+
+            <Swiper
+                effect={'coverflow'}
+                grabCursor={true}
+                centeredSlides={true}
+                loop={true}
+                breakpoints={
+                    {
+                        640 : {
+                            slidesPerView: 1,
+                        },
+                        768 : {
+                            slidesPerView: 2,
+                        },
+                        1024 : {
+                            slidesPerView: 3,
+                        }
+                    }
+                }
+                coverflowEffect={
+                    {
+                        rotate:0,
+                        stretch:0,
+                        depth: 100,
+                        modifier: 2.5,
+                    }
+                }
+                pagination={{el:'.swiper-pagination',clickable:true}}
+                navigation={
+                    {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                        clickable: true
+                    }
+                }
+                autoplay={{delay: 4000}}
+                modules={[EffectCoverflow,Pagination,Navigation]}
+                className="w-full lg:w-[60rem] h-auto pb-4 relative"
+            >   
+                {/*<SwiperSlide className=" swiper-slide w-[20rem] h-[20rem] m-0">
+                    <div className="w-[20rem] h-[20rem] rounded-lg bg-blue-600">
+                    </div>
+                </SwiperSlide>*/}
+
+                {programmsList.map(function(program,index){
+                    return  <SwiperSlide className=" swiper-slide w-[20rem] h-auto m-0">
+                                <ProgramCard key={index} program={program}/>
+                            </SwiperSlide>            
+                })}        
+                <div className="slider_controler">
+                    <div className="swiper-button-prev slider-arrow">
+                        <FaArrowCircleRight/>
+                    </div>
+                    <div className="swiper-button-next slider-arrow">
+                        <FaArrowCircleRight/>
+                    </div>
+                </div>
+            </Swiper>
         </div>
     )
 }
@@ -169,7 +239,7 @@ export function JoinActivity(){
         <>
         <h1 className="dark:text-white flex flex-col md:flex-row text-black text-center md:text-left text-2xl sm:text-3xl mb-8 dark:font-normal font-bold">Get Involved<span className="ml-0 md:ml-8 lg:ml-12 dark:text-green-500 text-2xl sm:text-3xl font-bold text-green-500">Fill up your details below and join us today</span> </h1>
         <div className="w-5/6 h-auto rounded-lg md:h-[30rem] flex flex-col md:flex-row dark:bg-green-950 bg-green-300 overflow-hidden box-border">
-            <div className="w-full md:w-1/2 h-[30rem] md:h-full   dark:bg-black bg-white">
+            <div className="w-full md:w-1/2 h-[30rem] md:h-full   dark:bg-black bg-slate-600">
                 <form onSubmit={volunteerHandler} className="w-full h-full flex flex-col justify-evenly items-center">
                     <div className="flex gap-3 w-5/6 h-24 flex-col">
                         <label htmlFor="Name" className="text-green-500 font-bold">Full Name</label>

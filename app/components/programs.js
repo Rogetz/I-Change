@@ -121,7 +121,7 @@ export async function Mentorship(){
     return(
         <div id="mentorship" className="w-full min-h-screen mb-4 lg:mb-12"> 
         <h1 className="text-2xl dark:text-white text-black pl-3 lg:text-3xl lg:font-bold lg:pl-12 mb-4 lg:mb-12">Mentorship programs</h1> 
-        <div className="w-full justify-evenly lg:justify-evenly h-auto flex  flex-wrap px-12 gap-4 sm:px-2 md:px-2 lg:px-12   gap-y-5 bg-gradient-to-br">
+        <div className="w-full justify-evenly lg:justify-evenly h-auto flex  flex-wrap gap-4 sm:px-2 md:px-2 lg:px-12   gap-y-5 bg-gradient-to-br">
             {mentorshipPrograms.map(async function(program,index){
                 const actualProgram = await program
                 let mentorPath = `programs-mentorship-${actualProgram.id}`
@@ -139,7 +139,7 @@ export async function Education(){
     return(
         <div id="education" className="w-full min-h-screen mb-4 lg:mb-12"> 
         <h1 className="text-2xl dark:text-white text-black pl-3 lg:text-3xl lg:font-bold lg:pl-12 mb-4 lg:mb-12">Educational innitiatives</h1> 
-        <div className="w-full justify-evenly lg:justify-evenly h-auto flex  flex-wrap px-12 gap-4 sm:px-2 md:px-2 lg:px-12   gap-y-5 bg-gradient-to-br">
+        <div className="w-full justify-evenly lg:justify-evenly h-auto flex  flex-wrap gap-4 sm:px-2 md:px-2 lg:px-12   gap-y-5 bg-gradient-to-br">
             {educationPrograms.map(async function(program,index){
                 const actualProgram = await program
                 let educatePath = `programs-education-${actualProgram.id}`
@@ -156,7 +156,7 @@ export async function Scholarships(){
     return(
         <div id="scholarships" className="w-full min-h-screen mb-4 lg:mb-12"> 
         <h1 className="text-2xl dark:text-white text-black pl-3 lg:text-3xl lg:font-bold lg:pl-12 mb-4 lg:mb-12">scholarship opportunities</h1> 
-        <div className="w-full justify-evenly lg:justify-evenly h-auto flex  flex-wrap px-12 gap-4 sm:px-2 md:px-2 lg:px-12   gap-y-5 bg-gradient-to-br">
+        <div className="w-full justify-evenly lg:justify-evenly h-auto flex  flex-wrap gap-4 sm:px-2 md:px-2 lg:px-12   gap-y-5 bg-gradient-to-br">
             {scholarshipPrograms.map(async function(program,index){
                 const actualProgram = await program
                 let scholarPath = `programs-scholarship-${actualProgram.id}`

@@ -164,7 +164,7 @@ export function AboutTeams(){
         <div id="team" className="w-full transition-all-[0.5s] h-auto mb-4 lg:mb-12">
         <h1 className="text-2xl dark:text-white text-black pl-3 lg:text-3xl lg:font-bold lg:pl-12 mb-4 lg:mb-12">Team</h1> 
             <div className="w-full h-auto">
-                <div className="w-full h-auto md:h-11/12 flex flex-col overflow-x-auto overflow-y-hidden sm:flex-row gap-8 px-16 sm:px-8 lg:px-12">
+                <div className="w-full h-auto md:h-11/12 flex flex-col overflow-x-auto overflow-y-hidden sm:flex-row gap-8 sm:px-8 lg:px-12">
                 {fakeMembers.map(function(member,index){
                     return <TeamCard key={index} member={member}/>
                 })}        

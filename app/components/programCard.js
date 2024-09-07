@@ -9,6 +9,11 @@ import Ivy from "../assets/Ivy_cropped.PNG"
 import plant from "../assets/plant.jpg"
 import studentPlanting2 from "../assets/studentPlanting2.jpg"
 
+//for swiper
+
+// for apis
+import { dataRequesting } from "./apis";
+
 // These loaders are good for cdn servers/ rather remote servers that serve images.
 // If its for localhost it doesn't work well not unless you create an image server as well.
 // // for localhost just use string tricks
@@ -92,6 +97,8 @@ export function TeamCard({member}){
     )
 }
 
+
+
 export function OpportunityCard({opportunity}){
     // to be provided by the assigning cards wrapper and not directly from the opportunity list.
     const [iconState,setIconState] = useState()
@@ -99,7 +106,19 @@ export function OpportunityCard({opportunity}){
     const opportunityName = opportunity.name 
     const opportunityLink = opportunity.opportunityLink
     const opportunityDetail = opportunity.detail
+    const programBrief = opportunity.Brief
+
+    const activityDetail = `{
+        "iconState":"",
+        "image": "",
+        "programName": "${opportunityName}",
+        "programBrief":"${programBrief}"
+    }`
     
+    const activityTitle = activityDetail
+    
+
+
     useEffect(function(){
         if(tag == "internship"){
             setIconState(<FaPen className="rounded-full text-4xl text-blue-600"/>)
@@ -111,6 +130,13 @@ export function OpportunityCard({opportunity}){
             setIconState(<FaAirbnb className="rounded-full text-4xl dark:text-white text-black"/>)
         }
     },[])
+    let dataRequester = function(jsonData){
+        dataRequesting(jsonData)
+    }
+    let storageSetter = function(e){
+        window.localStorage.setItem("activityTitle",activityTitle)
+        window.localStorage.setItem("programDetail",opportunityDetail)
+    }
     return(
         <div className="w-full flex flex-col gap-2  justify-end relative bg-center bg-cover bg-[url('../assets/studentPlanting2.jpg')] items-center sm:w-[23rem] lg:w-[23rem]  flex-shrink-0 flex-grow- h-[25rem] dark:bg-gray-950 bg-black rounded-xl px-4 py-8">
             <div className="dark:bg-black bg-white flex items-center justify-center rounded-full absolute top-4 left-4 w-[3.5rem] h-[3.5rem] lg:w-[4rem] lg:h-[4rem]">
@@ -119,12 +145,12 @@ export function OpportunityCard({opportunity}){
             <div className="text-green-600 font-bold text-xl">
                 {opportunityName}
             </div>
-            <div className="line-clamp-2 text-white">{opportunityDetail}...</div>
+            <div className="line-clamp-2 text-white">{programBrief}...</div>
             <div className="w-full h-12 flex justify-between">
-                <Link className="text-green-600 dark:bg-white bg-white w-fit h-fit py-2 px-4 text-xl rounded-lg" href={opportunityLink}>
+                <Link className="text-green-600 dark:bg-white bg-white w-fit h-fit py-2 px-4 text-sm sm:text-xl rounded-lg" onClick={storageSetter} href="/participate" >
                     apply
                 </Link>
-                <Link className="text-white dark:bg-black bg-green-600 w-fit h-fit py-2 px-4 text-xl rounded-lg" href={opportunityLink}>
+                <Link className="text-white dark:bg-black bg-green-600 w-fit h-fit py-2 px-4 text-sm sm:text-xl rounded-lg" href={opportunityLink}>
                     learn more...
                 </Link>
             </div>
@@ -137,7 +163,18 @@ export function SingleProgram({program,programPath}){
     const [iconState,setIconState] = useState()
     const tag = program.tag
     const programName = program.name 
-    const programDetail = program.detail
+    const programDetail = program.contentHtml
+    const programBrief = program.Brief
+
+    const activityDetail = `{
+        "iconState":"",
+        "image": "",
+        "programName": "${programName}",
+        "programBrief":"${programBrief}"
+    }`
+    const activityTitle = activityDetail
+    
+
     
     useEffect(function(){
         if(tag == "mentorship"){
@@ -150,6 +187,15 @@ export function SingleProgram({program,programPath}){
             setIconState(<FaAirbnb className="rounded-full text-4xl dark:text-white text-black"/>)
         }
     },[])
+
+    let dataRequester = function(jsonData){
+        dataRequesting(jsonData)
+    }
+    let storageSetter = function(e){
+        window.localStorage.setItem("activityTitle",activityTitle)
+        window.localStorage.setItem("programDetail",programDetail)
+    }
+
     return(
         <div className="w-full flex flex-col gap-2  justify-end relative bg-center bg-cover bg-[url('../assets/studentPlanting2.jpg')] items-center sm:w-[23rem] lg:w-[23rem]  flex-shrink-0 flex-grow- h-[25rem] dark:bg-gray-950 bg-black rounded-xl px-4 py-8">
         <div className="dark:bg-black bg-white flex items-center justify-center rounded-full absolute top-4 left-4 w-[3.5rem] h-[3.5rem] lg:w-[4rem] lg:h-[4rem]">
@@ -158,12 +204,12 @@ export function SingleProgram({program,programPath}){
         <div className="text-green-600 font-bold text-xl">
             {programName}
         </div>
-        <div className="line-clamp-2 text-white">{programDetail}...</div>
+        <div className="line-clamp-2 text-white">{programBrief}...</div>
         <div className="w-full h-12 flex justify-between">
-            <Link className="text-green-600 dark:bg-white bg-white w-fit h-fit py-2 px-4 text-xl rounded-lg" href={`learn/${programPath}`}>
+            <Link className="text-green-600 dark:bg-white bg-white w-fit h-fit py-2 px-4 text-sm sm:text-xl rounded-lg" onClick={storageSetter} href="/participate">
                 apply
             </Link>
-            <Link className="text-white dark:bg-black bg-green-600 w-fit h-fit py-2 px-4 text-xl rounded-lg" href={`learn/${programPath}`}>
+            <Link className="text-white dark:bg-black bg-green-600 w-fit h-fit py-2 px-4 text-sm sm:text-xl rounded-lg" href={`learn/${programPath}`}>
                 learn more...
             </Link>
         </div>
@@ -175,8 +221,26 @@ export function SingleEvent({program,programPath}){
     const [iconState,setIconState] = useState()
     const tag = program.tag
     const programName = program.name 
-    const programDetail = program.detail
-    
+    const programDetail = program.contentHtml
+    const programBrief = program.Brief
+
+    const activityDetail = `{
+        "iconState":"",
+        "image": "",
+        "programName": "${programName}",
+        "programBrief":"${programBrief}"
+    }`
+    // never stringify a string that' simply a tragedy
+    const activityTitle = activityDetail
+
+    let dataRequester = function(jsonData){
+        dataRequesting(jsonData)
+    }
+    let storageSetter = function(e){
+        window.localStorage.setItem("activityTitle",activityTitle)
+        window.localStorage.setItem("programDetail",programDetail)
+    }
+
     useEffect(function(){
         if(tag == "mentorship"){
             setIconState(<FaPen className="rounded-full text-4xl text-blue-600"/>)
@@ -190,24 +254,24 @@ export function SingleEvent({program,programPath}){
     },[])
     return(
         <div className="w-full flex flex-col gap-2  justify-end relative bg-center bg-cover  items-center sm:w-[23rem] lg:w-[23rem]  flex-shrink-0 flex-grow-1 min-h-[25rem] dark:bg-gray-950 bg-black">
-        <div className="dark:bg-black bg-white flex items-center justify-center absolute top-0 left-0 w-[3.5rem] h-[3.5rem] lg:w-[4rem] lg:h-[4rem]">
-            {iconState}
-        </div>
-        <div className="w-full h-4/6">
-            <Image src={studentPlanting2} className="w-full h-full object-cover object-center" width="600" height="600"/>
-        </div>
-        <div className="text-green-600 font-bold text-xl">
-            {programName}
-        </div>
-        <div className="line-clamp-2 text-white">{programDetail}...</div>
-        <div className="w-full h-12 flex justify-between mb-4">
-            <Link className="text-green-600 dark:bg-white bg-white w-fit h-fit ml-4 py-2 px-4 text-xl rounded-lg" href={`learn/${programPath}`}>
-                participate
-            </Link>
-            <Link className="text-white dark:bg-black bg-green-600 w-fit h-fit mr-4  py-2 px-4 text-xl rounded-lg" href={`learn/${programPath}`}>
-                learn more...
-            </Link>
-        </div>
+            <div className="dark:bg-black bg-white flex items-center justify-center absolute top-0 left-0 w-[3.5rem] h-[3.5rem] lg:w-[4rem] lg:h-[4rem]">
+                {iconState}
+            </div>
+            <div className="w-full h-4/6">
+                <Image src={studentPlanting2} className="w-full h-full object-cover object-center" width="600" height="600"/>
+            </div>
+            <div className="text-green-600 font-bold text-xl">
+                {programName}
+            </div>
+            <div className="line-clamp-2 text-white w-[98%] text-center">{programBrief}...</div>
+            <div className="w-full h-12 flex justify-between mb-4">
+                <Link className="text-green-600 dark:bg-white bg-white w-fit h-fit md:ml-4 py-2 px-4 text-sm sm:text-xl rounded-lg" onClick={storageSetter} href="/participate">
+                    participate
+                </Link>
+                <Link className="text-white dark:bg-black bg-green-600 w-fit h-fit md:mr-4  py-2 px-4 text-sm sm:text-xl rounded-lg" href={`learn/${programPath}`}>
+                    learn more...
+                </Link>
+            </div>
         </div>
     )
 }
