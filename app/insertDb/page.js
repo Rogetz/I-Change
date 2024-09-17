@@ -12,9 +12,11 @@ export default async function CreateDb() {
     return response.status(500).json({ error });
   }*/
   try {
+    let name = "Bruno"
+    let Owner = "Mutiso the breeder"
     const result =
-      await sql`CREATE TABLE Pets ( Name varchar(255), Owner varchar(255) );`;
-      
+      await sql`INSERT INTO Pets (Name,Owner) VALUES (${name},${Owner});`;
+      //returns command == INSERT
       NextResponse.json({ result }, { status: 200 });
       return(
         <div>{` the response result :${JSON.stringify(result)}`}</div>

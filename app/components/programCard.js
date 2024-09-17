@@ -11,8 +11,6 @@ import studentPlanting2 from "../assets/studentPlanting2.jpg"
 
 //for swiper
 
-// for apis
-import { dataRequesting } from "./apis";
 
 // These loaders are good for cdn servers/ rather remote servers that serve images.
 // If its for localhost it doesn't work well not unless you create an image server as well.

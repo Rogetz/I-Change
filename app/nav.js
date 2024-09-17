@@ -15,6 +15,7 @@ export function NavComponents(){
     const [darkState,setDarkState] = useState(<FaMoon className="dark:text-green-950 text-black text-2xl"/>)
     const [menuState,setMenuState] = useState(<div className="hidden"></div>)
     const {setTheme,resolvedTheme} = useTheme()
+    const [userName,setUserName] = useState(null)
     // detects the current path that they are in.
     const pathName = usePathname()
     //for displaying the light toggle button depending on the resolved theme.
@@ -25,6 +26,12 @@ export function NavComponents(){
         }
         else{
             setDarkState(<FaMoon className="dark:text-green-950 text-black text-2xl"/>)   
+        }
+        const tokenAndUser = window.localStorage.getItem("IchangeUser")
+        if(tokenAndUser != null){
+            let token = tokenAndUser.split(",")[0]
+            let userName = tokenAndUser.split(",")[1]
+            setUserName(userName)    
         }
     },[])
 
@@ -91,12 +98,18 @@ export function NavComponents(){
                     {darkState}
                 </button>
                 <NormalMenu links={links}/>
-                <Link href="/login" className="w-12 h-full flex flex-col justify-center items-center text-xl text-center">
-                    <button className="w-12 h-full flex flex-col justify-center items-center text-xl text-center">
-                        <FaUserCircle className="text-xl text-green-700"/>
-                        <span className="hidden text-center sm:block text-sm lg:text-xl">LogIn</span>
-                    </button>                
-                </Link>
+                <div className="w-auto h-full flex justify-center items-center text-xl text-center">
+                    {userName != null ?
+                        <div className="w-auto h-full flex justify-center items-center text-center">{userName}</div>                    
+                    :
+                    <Link href="/login" className="w-12 h-full flex flex-col justify-center items-center text-xl text-center">
+                        <button className="w-12 h-full flex flex-col justify-center items-center text-xl text-center">
+                            <FaUserCircle className="text-xl text-green-700"/>
+                            <span className="hidden text-center sm:block text-sm lg:text-xl">LogIn</span>
+                        </button>                
+                    </Link>
+                    }
+                </div>
                 <button onClick={listToggler} className="block lg:hidden">
                     <FaBars className="text-2xl"/>
                 </button>
