@@ -2,7 +2,7 @@
 ## website link
 [IChange](https://www.i-change.vercel.app)
 ## Technology used  
-    1. Nextjs  
+1. Nextjs  
     2. React
     3. Typescript
     4. Tailwind css
