@@ -1,6 +1,6 @@
 # I-Change
 ## website link
-## [IChange](https://www.i-change.vercel.app)
+[IChange](https://www.i-change.vercel.app)
 ## Technology used  
     1. Nextjs  
     2. React
